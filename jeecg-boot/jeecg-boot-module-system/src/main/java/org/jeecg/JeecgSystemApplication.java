@@ -11,6 +11,7 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
@@ -20,6 +21,7 @@ import java.net.UnknownHostException;
 * 单体启动类（采用此类启动项目为单体模式）
 */
 @Slf4j
+@ComponentScan(basePackages = {"org.jeecg","com.smartlms"})//将子模块添加进来才能扫描到
 @SpringBootApplication
 public class JeecgSystemApplication extends SpringBootServletInitializer {
 
@@ -35,7 +37,7 @@ public class JeecgSystemApplication extends SpringBootServletInitializer {
         String port = env.getProperty("server.port");
         String path = oConvertUtils.getString(env.getProperty("server.servlet.context-path"));
         log.info("\n----------------------------------------------------------\n\t" +
-                "Application Jeecg-Boot is running! Access URLs:\n\t" +
+                "Application SmartLMS is running! Access URLs:\n\t" +
                 "Local: \t\thttp://localhost:" + port + path + "/\n\t" +
                 "External: \thttp://" + ip + ":" + port + path + "/\n\t" +
                 "Swagger文档: \thttp://" + ip + ":" + port + path + "/doc.html\n" +

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
+import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -24,7 +25,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
+import com.google.common.base.Optional;
+import com.google.common.base.Predicate;
+import com.google.common.base.Function;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +41,9 @@ import java.util.List;
 @Import(BeanValidatorPluginsConfiguration.class)
 @ConditionalOnProperty(name = "swagger.enable", havingValue = "true")
 public class Swagger2Config implements WebMvcConfigurer {
+
+    // 定义分隔符,配置Swagger多包
+    private static final String splitor = ";";
 
     /**
      *
@@ -63,7 +69,8 @@ public class Swagger2Config implements WebMvcConfigurer {
                 .apiInfo(apiInfo())
                 .select()
                 //此包路径下的类，才生成接口文档
-                .apis(RequestHandlerSelectors.basePackage("org.jeecg"))
+//                .apis(RequestHandlerSelectors.basePackage("org.jeecg;com.smartlms"))
+                .apis(basePackage("org.jeecg;com.smartlms"))//此写法 支持多个base包路径下的扫描生成API接口
                 //加了ApiOperation注解的类，才生成接口文档
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
@@ -104,14 +111,14 @@ public class Swagger2Config implements WebMvcConfigurer {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 // //大标题
-                .title("Jeecg-Boot 后台服务API接口文档")
+                .title("SmartLMS智慧物流系统服务API接口文档")
                 // 版本号
                 .version("1.0")
 //				.termsOfServiceUrl("NO terms of service")
                 // 描述
-                .description("后台API接口")
+                .description("SmartLMS智慧物流系统服务API接口文档")
                 // 作者
-                .contact("JEECG团队")
+                .contact("苏州恒赛特自动化有限公司")
                 .license("The Apache License, Version 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                 .build();
@@ -136,5 +143,35 @@ public class Swagger2Config implements WebMvcConfigurer {
         return new ArrayList(
                 Collections.singleton(new SecurityReference(CommonConstant.X_ACCESS_TOKEN, authorizationScopes)));
     }
+
+
+    /**
+     * 重写basePackage方法，使能够实现多包访问，复制贴上去
+     * @author  lanccj
+     * @date 2020-12-19 13:02:51
+     * @param basePackage 数组
+     * @return com.google.common.base.Predicate<springfox.documentation.RequestHandler>
+     */
+    public static Predicate<RequestHandler> basePackage(final String basePackage) {
+        return input -> declaringClass(input).transform(handlerPackage(basePackage)).or(true);
+    }
+
+    private static Function<Class<?>, Boolean> handlerPackage(final String basePackage)     {
+        return input -> {
+            // 循环判断匹配
+            for (String strPackage : basePackage.split(splitor)) {
+                boolean isMatch = input.getPackage().getName().startsWith(strPackage);
+                if (isMatch) {
+                    return true;
+                }
+            }
+            return false;
+        };
+    }
+
+    private static Optional<? extends Class<?>> declaringClass(RequestHandler input) {
+        return Optional.fromNullable(input.declaringClass());
+    }
+
 
 }

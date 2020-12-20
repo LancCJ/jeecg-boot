@@ -48,39 +48,39 @@
 
 
         </a-tab-pane>
-        <a-tab-pane key="tab2" tab="手机号登录">
-          <a-form-item>
-            <a-input
-              v-decorator="['mobile',validatorRules.mobile]"
-              size="large"
-              type="text"
-              placeholder="手机号">
-              <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }"/>
-            </a-input>
-          </a-form-item>
+<!--        <a-tab-pane key="tab2" tab="手机号登录">-->
+<!--          <a-form-item>-->
+<!--            <a-input-->
+<!--              v-decorator="['mobile',validatorRules.mobile]"-->
+<!--              size="large"-->
+<!--              type="text"-->
+<!--              placeholder="手机号">-->
+<!--              <a-icon slot="prefix" type="mobile" :style="{ color: 'rgba(0,0,0,.25)' }"/>-->
+<!--            </a-input>-->
+<!--          </a-form-item>-->
 
-          <a-row :gutter="16">
-            <a-col class="gutter-row" :span="16">
-              <a-form-item>
-                <a-input
-                  v-decorator="['captcha',validatorRules.captcha]"
-                  size="large"
-                  type="text"
-                  placeholder="请输入验证码">
-                  <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>
-                </a-input>
-              </a-form-item>
-            </a-col>
-            <a-col class="gutter-row" :span="8">
-              <a-button
-                class="getCaptcha"
-                tabindex="-1"
-                :disabled="state.smsSendBtn"
-                @click.stop.prevent="getCaptcha"
-                v-text="!state.smsSendBtn && '获取验证码' || (state.time+' s')"></a-button>
-            </a-col>
-          </a-row>
-        </a-tab-pane>
+<!--          <a-row :gutter="16">-->
+<!--            <a-col class="gutter-row" :span="16">-->
+<!--              <a-form-item>-->
+<!--                <a-input-->
+<!--                  v-decorator="['captcha',validatorRules.captcha]"-->
+<!--                  size="large"-->
+<!--                  type="text"-->
+<!--                  placeholder="请输入验证码">-->
+<!--                  <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>-->
+<!--                </a-input>-->
+<!--              </a-form-item>-->
+<!--            </a-col>-->
+<!--            <a-col class="gutter-row" :span="8">-->
+<!--              <a-button-->
+<!--                class="getCaptcha"-->
+<!--                tabindex="-1"-->
+<!--                :disabled="state.smsSendBtn"-->
+<!--                @click.stop.prevent="getCaptcha"-->
+<!--                v-text="!state.smsSendBtn && '获取验证码' || (state.time+' s')"></a-button>-->
+<!--            </a-col>-->
+<!--          </a-row>-->
+<!--        </a-tab-pane>-->
       </a-tabs>
 
       <a-form-item>
@@ -88,9 +88,9 @@
         <router-link :to="{ name: 'alteration'}" class="forge-password" style="float: right;">
           忘记密码
         </router-link>
-       <router-link :to="{ name: 'register'}" class="forge-password" style="float: right;margin-right: 10px" >
-          注册账户
-        </router-link>
+<!--       <router-link :to="{ name: 'register'}" class="forge-password" style="float: right;margin-right: 10px" >-->
+<!--          注册账户-->
+<!--        </router-link>-->
       </a-form-item>
 
       <a-form-item style="margin-top:24px">
@@ -112,7 +112,7 @@
       @success="stepCaptchaSuccess"
       @cancel="stepCaptchaCancel"></two-step-captcha>
     <login-select-tenant ref="loginSelect" @success="loginSelectOk"></login-select-tenant>
-    <third-login ref="thirdLogin"></third-login>
+<!--    <third-login ref="thirdLogin"></third-login>-->
   </div>
 </template>
 
@@ -379,6 +379,10 @@
 <style lang="less" scoped>
 
   .user-layout-login {
+
+    //border: 1px solid #0c8fcf;
+    //background: rgba(50, 50, 50, 0.5);
+
     label {
       font-size: 14px;
     }

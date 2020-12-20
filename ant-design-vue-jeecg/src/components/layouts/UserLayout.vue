@@ -4,25 +4,23 @@
       <div class="top">
         <div class="header">
           <a href="/">
-            <img src="~@/assets/logo.svg" class="logo" alt="logo">
-            <span class="title">Jeecg Boot</span>
+<!--            <img src="~@/assets/logo.svg" class="logo" alt="logo">-->
+            <span class="title">SmartLMS智慧物流系统</span>
           </a>
         </div>
         <div class="desc">
-          Jeecg Boot 是中国最具影响力的 企业级 快速开发平台
+          助力企业物资管控,优化资源配置
         </div>
       </div>
 
       <route-view></route-view>
 
       <div class="footer">
-        <div class="links">
-          <a href="http://doc.jeecg.com" target="_blank">帮助</a>
-          <a href="https://github.com/zhangdaiscott/jeecg-boot" target="_blank">隐私</a>
-          <a href="https://github.com/zhangdaiscott/jeecg-boot/blob/master/LICENSE" target="_blank">条款</a>
-        </div>
+<!--        <div class="links">-->
+<!--          <a href="http://www.hstscale.com/faq.html" target="_blank">帮助</a>-->
+<!--        </div>-->
         <div class="copyright">
-          Copyright &copy; 2019 <a href="http://www.jeecg.com" target="_blank">JEECG开源社区</a> 出品
+          Copyright &copy; 2020 <a href="http://www.hstscale.com/" target="_blank">苏州恒赛特自动化科技有限公司</a> 出品
         </div>
       </div>
     </div>
@@ -65,10 +63,11 @@
     .container {
       width: 100%;
       min-height: 100%;
-      background: #f0f2f5 url(~@/assets/background.svg) no-repeat 50%;
+      background: #f0f2f5 url(~@/assets/hst-background3.svg) no-repeat 50%;
       background-size: 100%;
       padding: 110px 0 144px;
       position: relative;
+
 
       a {
         text-decoration: none;
@@ -100,7 +99,8 @@
 
           .title {
             font-size: 33px;
-            color: rgba(0, 0, 0, .85);
+            //color: rgba(0, 0, 0, .85);
+            color : rgba(255,255,255,.85);
             font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             font-weight: 600;
             position: relative;
@@ -109,7 +109,8 @@
         }
         .desc {
           font-size: 14px;
-          color: rgba(0, 0, 0, 0.45);
+          //color: rgba(0, 0, 0, 0.45);
+          color : rgba(255,255,255,.85);
           margin-top: 12px;
           margin-bottom: 40px;
         }

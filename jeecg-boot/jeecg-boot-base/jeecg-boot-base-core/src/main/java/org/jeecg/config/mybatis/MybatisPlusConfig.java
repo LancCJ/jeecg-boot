@@ -22,10 +22,11 @@ import java.util.List;
 /**
  * 单数据源配置（jeecg.datasource.open = false时生效）
  * @Author zhoujf
- *
+ *修改添加了SmartLMS的扫描配置
+ * 2020-12-19 15:46:10 LancCJ
  */
 @Configuration
-@MapperScan(value={"org.jeecg.modules.**.mapper*"})
+@MapperScan(value={"org.jeecg.modules.**.mapper*","com.smartlms.**.mapper*"})
 public class MybatisPlusConfig {
 
     /**
