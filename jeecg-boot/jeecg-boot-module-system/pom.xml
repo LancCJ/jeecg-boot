@@ -40,6 +40,13 @@
 			<version>${jeecgboot.version}</version>
 		</dependency>
 
+		<!--SmartFlowable模块导入-->
+		<dependency>
+			<groupId>org.jeecgframework.boot</groupId>
+			<artifactId>smart-flowable</artifactId>
+			<version>${jeecgboot.version}</version>
+		</dependency>
+
 		<!--SmartLMS模块导入-->
 		<dependency>
 			<groupId>org.jeecgframework.boot</groupId>

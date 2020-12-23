@@ -55,6 +55,7 @@
 		<module>jeecg-boot-starter</module>
 		<module>jeecg-cloud-module</module>
         <module>smart-lms</module>
+        <module>smart-flowable</module>
     </modules>
 
 	<distributionManagement>
