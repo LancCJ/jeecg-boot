@@ -100,7 +100,15 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/**/*.jpg", "anon");
         filterChainDefinitionMap.put("/**/*.png", "anon");
         filterChainDefinitionMap.put("/**/*.ico", "anon");
-        filterChainDefinitionMap.put("/**/*.json", "anon");
+
+        //flowable  权限需要进行管控  目前测试所以暂时这样写  //TODO  LancCJ
+        filterChainDefinitionMap.put("/**/*.json", "anon");//集成flowable需要过滤此静态文件
+        filterChainDefinitionMap.put("/**/*.xml", "anon");//集成flowable需要过滤此静态文件
+        filterChainDefinitionMap.put("/flowb/**", "anon");
+        filterChainDefinitionMap.put("/app/**", "anon");
+        filterChainDefinitionMap.put("/index.html", "anon");//流程首页
+
+
 
         // update-begin--Author:sunjianlei Date:20190813 for：排除字体格式的后缀
         filterChainDefinitionMap.put("/**/*.ttf", "anon");

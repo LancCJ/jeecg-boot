@@ -297,14 +297,14 @@
     <profiles>
         <!-- 开发 -->
         <profile>
-            <id>dev</id>
+            <id>devp</id>
             <activation>
                 <!--默认激活配置-->
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <!--当前环境-->
-                <profile.name>dev</profile.name>
+                <profile.name>devp</profile.name>
                 <!--配置文件前缀-->
                 <prefix.name>jeecg</prefix.name>
                 <!--Nacos配置中心地址-->

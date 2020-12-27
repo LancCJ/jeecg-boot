@@ -6,6 +6,7 @@ import org.apache.tomcat.util.scan.StandardJarScanner;
 import org.jeecg.common.util.oConvertUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -20,8 +21,17 @@ import java.net.UnknownHostException;
 * 单体启动类（采用此类启动项目为单体模式）
 */
 @Slf4j
-@ComponentScan(basePackages = {"org.jeecg","com.smartlms"})//将子模块添加进来才能扫描到
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        //排除登录验证
+        SecurityAutoConfiguration.class,
+        org.flowable.spring.boot.FlowableSecurityAutoConfiguration.class,
+        org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration.class
+})
+@ComponentScan(basePackages = {
+        "org.jeecg",
+        //将子模块添加进来才能扫描到
+        "com.smartlms"
+})
 public class JeecgSystemApplication extends SpringBootServletInitializer {
 
     @Override

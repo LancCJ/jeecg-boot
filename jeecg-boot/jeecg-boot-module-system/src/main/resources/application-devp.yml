@@ -282,3 +282,9 @@ justauth:
     type: default
     prefix: 'demo::'
     timeout: 1h
+# flowable流程相关配置
+flowable:
+  common:
+    app:
+      idm-url: http://127.0.0.1/8080/flowable-idm
+
