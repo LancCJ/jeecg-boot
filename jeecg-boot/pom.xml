@@ -56,6 +56,7 @@
 		<module>jeecg-cloud-module</module>
         <module>smart-lms</module>
         <module>smart-flowable</module>
+        <module>smart-report</module>
     </modules>
 
 	<distributionManagement>
