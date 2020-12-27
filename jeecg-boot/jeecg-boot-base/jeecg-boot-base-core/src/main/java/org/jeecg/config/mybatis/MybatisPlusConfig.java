@@ -27,7 +27,7 @@ import java.util.List;
  * 2020-12-19 15:46:10 LancCJ
  */
 @Configuration
-@MapperScan(value={"org.jeecg.modules.**.mapper*","com.smartlms.**.mapper*","com.smartlms.flowable.modules.app.dao.jpas*"})
+@MapperScan(value={"org.jeecg.modules.**.mapper*","com.smartlms.**.mapper*"})
 public class MybatisPlusConfig {
 
     /**
