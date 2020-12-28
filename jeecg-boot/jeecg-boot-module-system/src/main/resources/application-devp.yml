@@ -156,7 +156,7 @@ spring:
     port: 6379
 #mybatis plus 设置  此处需要设置 Mapper XML地址
 mybatis-plus:
-  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml,classpath*:com/smartlms/**/mapper/xml/*Mapper.xml
+  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml,classpath*:com/smartlms/**/mapper/xml/*Mapper.xml,classpath:/META-INF/modeler-mybatis-mappings/*.xml
   global-config:
     # 关闭MP3.0自带的banner
     banner: false
@@ -170,6 +170,10 @@ mybatis-plus:
     #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # 返回类型为Map,显示null对应的字段
     call-setters-on-nulls: true
+  configuration-properties:
+    blobType: BLOB
+    boolValue: TRUE
+    prefix:
 #jeecg专用配置
 jeecg :
   # 本地：local\Minio：minio\阿里云：alioss

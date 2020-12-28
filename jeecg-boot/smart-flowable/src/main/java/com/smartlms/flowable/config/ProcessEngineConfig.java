@@ -125,36 +125,36 @@ public class ProcessEngineConfig {
         return springProcessEngineConfiguration;
     }
 
-    @Bean
-    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) {
-        MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(dataSource);
-        String databaseType = initDatabaseType(dataSource);
-        if (databaseType == null) {
-            throw new FlowableException("couldn't deduct database type");
-        }
-
-        try {
-            Properties properties = new Properties();
-            properties.put("prefix", "");
-            properties.put("blobType", "BLOB");
-            properties.put("boolValue", "TRUE");
-
-            properties.load(this.getClass().getClassLoader().getResourceAsStream("org/flowable/db/properties/" + databaseType + ".properties"));
-
-            sqlSessionFactoryBean.setConfigurationProperties(properties);
-            sqlSessionFactoryBean
-                    .setMapperLocations(
-                            ResourcePatternUtils.getResourcePatternResolver(resourceLoader).getResources(
-                                    "classpath*:org/jeecg/modules/**/xml/*Mapper.xml,classpath*:com/smartlms/**/mapper/xml/*Mapper.xml,classpath:/META-INF/modeler-mybatis-mappings/*.xml")
-                    );
-            sqlSessionFactoryBean.afterPropertiesSet();
-            return sqlSessionFactoryBean.getObject();
-        } catch (Exception e) {
-            throw new FlowableException("Could not create sqlSessionFactory", e);
-        }
-
-    }
+//    @Bean
+//    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) {
+//        MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
+//        sqlSessionFactoryBean.setDataSource(dataSource);
+//        String databaseType = initDatabaseType(dataSource);
+//        if (databaseType == null) {
+//            throw new FlowableException("couldn't deduct database type");
+//        }
+//
+//        try {
+//            Properties properties = new Properties();
+//            properties.put("prefix", "");
+//            properties.put("blobType", "BLOB");
+//            properties.put("boolValue", "TRUE");
+//
+//            properties.load(this.getClass().getClassLoader().getResourceAsStream("org/flowable/db/properties/" + databaseType + ".properties"));
+//
+//            sqlSessionFactoryBean.setConfigurationProperties(properties);
+//            sqlSessionFactoryBean
+//                    .setMapperLocations(
+//                            ResourcePatternUtils.getResourcePatternResolver(resourceLoader).getResources(
+//                                    "classpath*:org/jeecg/modules/**/xml/*Mapper.xml,classpath*:com/smartlms/**/mapper/xml/*Mapper.xml,classpath:/META-INF/modeler-mybatis-mappings/*.xml")
+//                    );
+//            sqlSessionFactoryBean.afterPropertiesSet();
+//            return sqlSessionFactoryBean.getObject();
+//        } catch (Exception e) {
+//            throw new FlowableException("Could not create sqlSessionFactory", e);
+//        }
+//
+//    }
 
     protected String initDatabaseType(DataSource dataSource) {
         String databaseType = null;
