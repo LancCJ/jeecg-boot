@@ -5,6 +5,7 @@ import org.flowable.idm.api.User;
 import org.flowable.idm.engine.impl.persistence.entity.UserEntity;
 import org.flowable.idm.engine.impl.persistence.entity.UserEntityImpl;
 import org.flowable.ui.common.model.UserRepresentation;
+import org.flowable.ui.common.security.DefaultPrivileges;
 import org.flowable.ui.common.security.SecurityUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ import java.util.List;
  * @date 2020/12/27 4:58 下午
  */
 @RestController
-@RequestMapping("/flowb/app")
+@RequestMapping("/app")
 public class SmartRemoteAccountResource {
 
     /**
@@ -39,11 +40,11 @@ public class SmartRemoteAccountResource {
         userRepresentation.setFirstName("SmartLMS");
         //权限设置
         List<String> privileges = Lists.newArrayList();
-        privileges.add("flowable-idm");
-        privileges.add("flowable-admin");
-        privileges.add("flowable-modeler");
-        privileges.add("flowable-task");
-        privileges.add("flowable-rest");
+        privileges.add(DefaultPrivileges.ACCESS_MODELER);
+        privileges.add(DefaultPrivileges.ACCESS_IDM);
+        privileges.add(DefaultPrivileges.ACCESS_ADMIN);
+        privileges.add(DefaultPrivileges.ACCESS_TASK);
+        privileges.add(DefaultPrivileges.ACCESS_REST_API);
         userRepresentation.setPrivileges(privileges);
         return userRepresentation;
     }

@@ -259,8 +259,8 @@ swagger:
   production: false
   basic:
     enable: false
-    username: jeecg
-    password: jeecg1314
+    username: startlms
+    password: startlms
 #第三方登录
 justauth:
   enabled: true
@@ -291,4 +291,16 @@ flowable:
   common:
     app:
       idm-url: http://127.0.0.1/8080/flowable-idm
-
+      idm-admin:
+        user: SmartLMS
+        password: SmartLms
+  idm:
+    app:
+      admin:
+        password: SmartLMS
+        user-id: SmartLMS
+        first-name: SmartLMS
+        last-name: SmartLMS
+      rest-enabled: true
+    enabled: true
+  rest-api-enabled: true

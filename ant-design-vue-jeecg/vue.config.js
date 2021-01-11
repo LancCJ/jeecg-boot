@@ -79,9 +79,9 @@ module.exports = {
           /* less 变量覆盖，用于自定义 ant design 主题 */
           'primary-color': '#1890FF',
           'link-color': '#1890FF',
-          'border-radius-base': '4px',
+          'border-radius-base': '4px'
         },
-        javascriptEnabled: true,
+        javascriptEnabled: true
       }
     }
   },
@@ -98,10 +98,10 @@ module.exports = {
         }
       },*/
       '/smartlms': {
-        target: 'http://localhost:8080', //请求本地 需要jeecg-boot后台项目
+        target: 'http://localhost:8080', //请求本地 需要smartlms后台项目
         ws: false,
         changeOrigin: true
-      },
+      }
     }
   },
 

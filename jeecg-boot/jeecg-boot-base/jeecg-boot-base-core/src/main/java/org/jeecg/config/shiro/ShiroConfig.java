@@ -104,9 +104,12 @@ public class ShiroConfig {
         //flowable  权限需要进行管控  目前测试所以暂时这样写  //TODO  LancCJ
         filterChainDefinitionMap.put("/**/*.json", "anon");//集成flowable需要过滤此静态文件
         filterChainDefinitionMap.put("/**/*.xml", "anon");//集成flowable需要过滤此静态文件
-        filterChainDefinitionMap.put("/flowb/**", "anon");
+        //filterChainDefinitionMap.put("/flowb/**", "anon"); //因为进行重写屏蔽操作 所以这里就不需要了 到时候直接删除
         filterChainDefinitionMap.put("/app/**", "anon");
         filterChainDefinitionMap.put("/index.html", "anon");//流程首页
+        filterChainDefinitionMap.put("/activiti/**", "anon");
+        filterChainDefinitionMap.put("/diagram-viewer/**", "anon");
+        filterChainDefinitionMap.put("/editor-app/**", "anon");
 
 
 

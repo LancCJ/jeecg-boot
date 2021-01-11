@@ -48,6 +48,9 @@ import VueAreaLinkage from 'vue-area-linkage'
 import '@/components/jeecg/JVxeTable/install'
 import '@/components/JVxeCells/install'
 
+// k-form-design 表单设计器 使用源码依赖，方便二次开发 文档 http://kcz66.gitee.io/k-form-design
+import KFormDesign from '@/components/extension/k-form-design/packages'
+
 Vue.config.productionTip = false
 Vue.use(Storage, config.storageOptions)
 Vue.use(Antd)
@@ -60,6 +63,7 @@ Vue.use(preview)
 Vue.use(vueBus);
 Vue.use(JeecgComponents);
 Vue.use(VueAreaLinkage);
+Vue.use(KFormDesign)
 
 SSO.init(() => {
   main()

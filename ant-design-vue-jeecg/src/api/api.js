@@ -89,6 +89,13 @@ const checkRuleByCode = (params) => getAction('/sys/checkRule/checkByCode', para
 //加载我的通告信息
 const getUserNoticeInfo= (params)=>getAction("/sys/sysAnnouncementSend/getMyAnnouncementSend",params);
 const getTransitURL = url => `/sys/common/transitRESTful?url=${encodeURIComponent(url)}`
+
+
+// OA工作流
+const getDesignForm = (params)=>getAction("/flowable/formDef/queryById",params);//获取设计表单
+const editDesignForm = (params)=>putAction("/flowable/formDef/edit",params);//添加设计表单
+
+
 // 中转HTTP请求
 export const transitRESTful = {
   get: (url, parameter) => getAction(getTransitURL(url), parameter),
@@ -98,6 +105,10 @@ export const transitRESTful = {
 }
 
 export {
+  //oa
+  getDesignForm,
+  editDesignForm,
+
   addRole,
   editRole,
   checkRoleCode,
